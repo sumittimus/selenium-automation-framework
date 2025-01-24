@@ -1,1 +1,7 @@
-/target/
+target/
+*.class
+*.log
+*.tmp
+.settings/
+.metadata/
+bin/
