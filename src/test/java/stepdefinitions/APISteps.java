@@ -40,8 +40,15 @@ public class APISteps {
 
 	@Then("I validate the 'pending' count")
 	public void validatePendingCount() {
+		//Since the response is incorrect adding test case failure handling
+		try {
 			int pendingCount = response.jsonPath().getInt("pending");
 			Assert.assertTrue(pendingCount > 0, "Pending count should be greater than 0");
+		}catch (Exception e) {
+			errorMessages.add("Different error code received : " + response.getStatusCode() + ". Fatal Error Details : "
+					+ e.getMessage());
+		}
+			
 	}
 
 	@After
