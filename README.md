@@ -7,6 +7,17 @@ Manually Run the Workflow
 5. Select the desired branch (e.g., feature_branch).
 6. Click "Run workflow" to start the test execution.
 
+#HOW TO CHECKOUT THIS CODE FROM GITHUB
+#### STEP 1 : Install Git.
+#### STEP 2 : Navigate to the project workspace on your local machine
+#### STEP 3 : Run
+git clone -b feature_branch https://github.com/sumittimus/selenium-automation-framework.git
+#### STEP 4 : Switch to branch if already cloned
+git checkout feature_branch
+#### STEP 5 : Pull latest updates from GitHub
+git pull origin feature_branch
+#### STEP 6 : Refer to below 2 sections on the method of execution
+
 #HOW TO RUN THIS FRAMEWORK LOCALLY (WITHOUT SELENIUM GRID)
 Follow these steps to run the automation framework locally (without using Selenium Grid).
 
@@ -66,16 +77,6 @@ docker-compose down
 
 ################################################################################################
 
-#HOW TO CHECKOUT THIS CODE FROM GITHUB
-#### STEP 1 : Install Git.
-#### STEP 2 : Navigate to the project workspace on your local machine
-#### STEP 3 : Run
-git clone -b feature_branch https://github.com/sumittimus/selenium-automation-framework.git
-#### STEP 4 : Switch to branch if already cloned
-git checkout feature_branch
-#### STEP 5 : Pull latest updates from GitHub
-git pull origin feature_branch
-#### STEP 6 : Refer to above 2 sections on the method of execution
 
 
 
