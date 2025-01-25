@@ -43,6 +43,8 @@ public class APISteps {
 		//Since the response is incorrect adding test case failure handling
 		try {
 			int pendingCount = response.jsonPath().getInt("pending");
+
+			Assert.assertNotNull(pendingCount, "The 'pending' field is missing in the response.");
 			Assert.assertTrue(pendingCount > 0, "Pending count should be greater than 0");
 		}catch (Exception e) {
 			errorMessages.add("Different error code received : " + response.getStatusCode() + ". Fatal Error Details : "

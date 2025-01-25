@@ -1,3 +1,12 @@
+#HOW TO RUN THIS FRAMEWORK FROM GITHUB
+Manually Run the Workflow
+1. Go to your GitHub repository "https://github.com/sumittimus/selenium-automation-framework/tree/feature_branch".
+2. Click on the "Actions" tab.
+3. Select the "Selenium Test Automation on Public Docker" workflow.
+4. Click "Run workflow" (top-right).
+5. Select the desired branch (e.g., feature_branch).
+6. Click "Run workflow" to start the test execution.
+
 #HOW TO RUN THIS FRAMEWORK LOCALLY (WITHOUT SELENIUM GRID)
 Follow these steps to run the automation framework locally (without using Selenium Grid).
 
