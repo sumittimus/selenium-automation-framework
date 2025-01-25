@@ -1,0 +1,60 @@
+name: Selenium Test Automation CI/CD
+
+on:
+  push:
+    branches:
+      - feature_branch
+      - main
+  pull_request:
+    branches:
+      - feature_branch
+      - main
+
+jobs:
+  test-execution:
+    runs-on: ubuntu-latest
+
+    services:
+      selenium-hub:
+        image: selenium/hub:latest
+        ports:
+          - 4444:4444
+
+      chrome-node:
+        image: selenium/node-chrome:latest
+        depends_on:
+          - selenium-hub
+        shm_size: 2g
+
+      firefox-node:
+        image: selenium/node-firefox:latest
+        depends_on:
+          - selenium-hub
+        shm_size: 2g
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Build and run tests with Maven
+        run: mvn clean test -DsuiteXmlFile=testng.xml -Dbrowser=chrome -DexecutionMode=grid
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: target/surefire-reports/
