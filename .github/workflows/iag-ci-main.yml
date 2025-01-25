@@ -22,15 +22,21 @@ jobs:
 
       chrome-node:
         image: selenium/node-chrome:latest
-        depends_on:
-          - selenium-hub
-        shm_size: 2g
+        ports:
+          - 5900:5900
+        env:
+          SE_EVENT_BUS_HOST: selenium-hub
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
 
       firefox-node:
         image: selenium/node-firefox:latest
-        depends_on:
-          - selenium-hub
-        shm_size: 2g
+        ports:
+          - 5901:5900
+        env:
+          SE_EVENT_BUS_HOST: selenium-hub
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
 
     steps:
 
